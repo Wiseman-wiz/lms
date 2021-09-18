@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        // if(Auth::user() && Auth::user()->hasRole('teacher')){
+        if(Auth::user() && Auth::user()->hasRole('teacher')){
             $totalSubjects = Cache::remember('totalSubjects', 5 , function () {
                 return Subject::count();
             });
@@ -42,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
                 ] as $key => $value) {
                     View::share($key, $value);
                 }
-            // }
+            }
         }
 
         /**
